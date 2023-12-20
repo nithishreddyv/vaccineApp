@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:nani="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd"> 
+	<nani:component-scan base-package="com.tap.vaccine"></nani:component-scan>
+	
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"></mvc:resources>
+	
+	<bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" id="sessionFactoryObj">
+		<property name="configLocation" value="/WEB-INF/Hibernate.cfg.xml"></property>
+	</bean>
+	
+	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"></property> 
+		<property name="username" value="nithinaninikhi@gmail.com"></property>
+		<property name="password" value="aemt dkbp feje hjuy"></property>
+		<property name="port" value="587"></property>
+		<property name="javaMailProperties">
+		<props>
+			<prop key="mail.smtp.auth">true</prop>
+			<prop key="mail.smtp.starttls.enable">true</prop>
+			<prop key="mail.smtp.starttls.required">true</prop>
+		</props>
+		</property>
+	</bean>
+	
+</beans>
